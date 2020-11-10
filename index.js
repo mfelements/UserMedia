@@ -1,10 +1,10 @@
 import Stream from '@mfelements/stream'
 
-export default async function getCameraVideo(options){
+export async function getCameraVideo(options){
     const streamId = await mainThreadAction('createStream');
     let stream = new Stream;
     streamStorage[streamId] = stream;
-    await mainThreadAction('getUserMedia', streamId, options);
+    await mainThreadAction('getCameraVideo', streamId, options);
     return new ReadableStream({
         start(controller){
             stream.on('data', chunk => controller.enqueue(chunk));

@@ -11,6 +11,7 @@ class ReadableMediaStream extends ReadableStream{
     #stopped;
     /** @arg {Promise<string>} streamId */
     constructor(streamId){
+        super();
         this.#streamId = streamId;
         this.#started = new Promise(r => this[start] = r)
     }
